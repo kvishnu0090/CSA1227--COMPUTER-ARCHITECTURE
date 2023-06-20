@@ -1,0 +1,67 @@
+#include<stdio.h>
+
+// Stage 1: Data Input
+void input_data(int *a, int *b) {
+    printf("Enter number 1: ");
+    scanf("%d", a);
+
+    printf("Enter number 2: ");
+    scanf("%d", b);
+}
+
+// Stage 2: Math Operation
+int perform_operation(int a, int b, int choice) {
+    int result;
+
+    switch (choice) {
+        case 1:
+            printf("Performing addition\n");
+            result = a + b;
+            break;
+        case 2:
+            printf("Performing subtraction\n");
+            result = a - b;
+            break;
+        case 3:
+            printf("Performing multiplication\n");
+            result = a * b;
+            break;
+        case 4:
+            printf("Performing division\n");
+            result = a / b;
+            break;
+        default:
+            printf("Wrong input\n");
+            result = 0;
+            break;
+    }
+
+    return result;
+}
+
+int main() {
+    int a, b, choice, res, ins;
+    int counter = 1; // Stage 1: Data Input
+
+    // Stage 1: Data Input
+    input_data(&a, &b);
+    counter += 2;
+
+    printf("1-Addition\n2-Subtraction\n3-Multiplication\n4-Division\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    // Stage 2: Math Operation
+    res = perform_operation(a, b, choice);
+    counter += 1;
+
+    printf("The cycle value is: %d\n", counter);
+
+    printf("Enter the number of instructions: ");
+    scanf("%d", &ins);
+
+    int performance_measure = ins / counter;
+    printf("The performance measure is: %d\n", performance_measure);
+
+    return 0;
+}
