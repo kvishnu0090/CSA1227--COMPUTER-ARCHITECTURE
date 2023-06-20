@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+// Function to convert octal digit to binary
+void convertOctalToBinary(int octalDigit)
+{
+    // Array to store the binary representation of an octal digit
+    int binary[3] = {0, 0, 0};
+    int index = 2;
+
+    // Convert octal digit to binary
+    while (octalDigit > 0)
+    {
+        binary[index] = octalDigit % 2;
+        octalDigit = octalDigit / 2;
+        index--;
+    }
+
+    // Print the binary representation
+    for (int i = 0; i < 3; i++)
+    {
+        printf("%d", binary[i]);
+    }
+}
+
+// Function to convert octal number to binary
+void convertOctalToBinaryNumber(int octalNumber)
+{
+    // Special case for octal number 0
+    if (octalNumber == 0)
+    {
+        printf("0");
+        return;
+    }
+
+    // Convert each octal digit to binary
+    while (octalNumber > 0)
+    {
+        int octalDigit = octalNumber % 10;
+        convertOctalToBinary(octalDigit);
+        octalNumber = octalNumber / 10;
+    }
+}
+
+int main()
+{
+    int octalNumber;
+
+    // Read octal number from user
+    printf("Enter an octal number: ");
+    scanf("%d", &octalNumber);
+
+    // Convert octal to binary
+    printf("Binary equivalent: ");
+    convertOctalToBinaryNumber(octalNumber);
+
+    return 0;
+}
